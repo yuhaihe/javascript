@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="arr">数组随机排序</div>
+    <div class="aaa">
+      father
+      <p>child</p>
+    </div>
+    <script>
+      let arr = [1, 2, 5, 3, 7, 2, 3];
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[i] === arr[j]) {
+            arr.splice(j, 1);
+          }
+        }
+      }
+      // console.log(arr)
+      arr.forEach(function(e) {
+        // console.log(e)
+      });
+      var result = arr.some(function(i) {
+        if (i > 8) {
+          return true;
+        }
+      });
+      // console.log(result)
+      // let randomArr = arr.sort(function(r1,r2){
+      //   console.log(arguments)
+      //   return Math.random()-0.5;
+      // })
+      // 去重
+      // let arr2 = new Set();
+      // arr.map((i)=>{
+      //   arr2.add(i)
+      // })
+      // 排序
+      // for (let i = 0; i < arr.length; i++) {
+      //   for (let j = i+1; j < arr.length; j++) {
+      //      if(arr[i]<arr[j]){
+      //        [arr[i],arr[j]] = [arr[j],arr[i]]
+      //      }
+      //   }
+      // }
+      // 冒泡
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+          if (arr[j] < arr[j + 1]) {
+            [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+      // console.log(arr)
+      // 基本类型 & 引用类型
+      let obj = { a: 1 };
+      let obj2 = { a: obj.a };
+      obj.a = 3;
+      let f = new Error("1344");
+
+      // 原型继承
+
+      // class Demo {
+      //   constructor(){
+      //     this.num = 1;
+      //   }
+      //   alertHandler(){
+      //      this.num++
+      //      console.log(this.num)
+      //   }
+      // }
+
+      // class Child extends Demo {
+      //   constructor(props){
+      //     super(props);
+      //     this.a = this.num;
+      //     this.readAlert();
+      //   }
+      //   readAlert(){
+      //     return this.alertHandler()
+      //   }
+      // }
+
+      // let test = new Child();
+      // console.log(test.a)
+      // test.readAlert();
+
+      function Demo() {
+        this.name = "abc";
+      }
+      Demo.prototype.alertName = function() {
+        alert(this.name);
+      };
+      var d = new Demo();
+      d.test = "test";
+      // console.log(d)
+      // console.log(Demo)
+      for (const i in d) {
+        if (d.hasOwnProperty(i)) {
+          // console.log(i)
+        }
+      }
+      function Child() {}
+      // Child.prototype = new Demo();
+      // var x = new Child();
+      // console.log(x.color);
+      // console.log(x);
+      // console.log(aa)
+      // var aa;
+      // function fun(){
+      //     aa = 1;
+      // }
+      // fun();
+      // aa = 2
+      // console.log(aa)
+
+      function Element(id) {
+        this.elem = document.getElementById(id);
+      }
+
+      Element.prototype.html = function(val) {
+        var elem = this.elem;
+        if (val) {
+          elem.innerHTML = val;
+        } else {
+          return elem.innerHTML;
+        }
+      };
+      var $ = new Element("arr");
+      // $.html(123)
+      function fun2() {
+        console.log(arguments);
+      }
+      // fun2(1,2,3)
+      // console.log(fn)
+      function fn() {
+        // 声明形式
+        var ab = 2;
+        console.log(ab);
+      }
+      // console.log(a)
+      var a = function() {
+        // 表达式形式
+        console.log(1);
+      };
+      // console.log(a)
+      // var l;
+      // for (let i = 0; i < 5; i++) {
+      //    setTimeout(function(){
+      //     console.log(new Date,i)
+      //    },1000)
+      // }
+
+      function fun3(name, age) {
+        console.log(name, age);
+        console.log(this);
+      }
+      var nameObj = {
+        name: "name"
+      };
+      // fun3.call({x:100},['nameObj',100])
+      // ff
+
+      // for (let i = 0; i < 10; i++) {
+      //   var elem = document.createElement('a');
+      //   elem.innerHTML = i;
+      //   document.getElementById('arr').appendChild(elem);
+      // }
+      // document.getElementById('arr').addEventListener('click',function(e){
+      //   var value = e.target.innerHTML;
+      //   console.log(value)
+      // })
+
+      // console.log('start')
+      // setTimeout(function(){
+
+      //   console.log('time')
+
+      // },0)
+      // for (let index = 0; index < 10000; index++) {
+      //   console.log(index)
+      //   }
+      // console.log('end')
+
+      //   var name = 'word';
+
+      //  (function (){
+      //     if(typeof name == 'undefined'){
+      //       var name = 'jack'
+      //       console.log('good'+name,)
+      //     }else{
+      //       console.log('hello'+name,)
+      //     }
+      //   })()
+
+      //   var end = 200;
+      //   var start = end-100;
+      //   var count = 0;
+      //   for (let i = start; i <= end; i++) {
+      //     count++;
+      //   }
+      //   console.log(count)
+      // function login(){
+      //   setTimeout(function(){
+      //     console.log(1)
+      //   },100)
+      // }
+      // function getInfo(){
+      //   setTimeout(function(){
+      //     console.log(2)
+      //     return 2
+      //   },10)
+      // }
+      //  async function asyncFunc(params) {
+      //   const result1 = await this.login()
+      //   const result2 = await this.getInfo()
+      // }
+      // asyncFunc();
+      // document.body.addEventListener('click',function(e){
+      //   console.log(e)
+      // })
+
+      // document.querySelector('.aaa').addEventListener('click',function(e){
+      //   console.log(e)
+      // },true)
+      // document.querySelector('.aaa').childNodes[1]
+      // .addEventListener('click',function(e){
+      //   console.log('child')
+      // })
+
+      // function promose(time){
+      //   return new Promise((resovle,reject)=>{
+      //     setTimeout(()=>{
+      //        resovle({object:()=>{alert(1)}});
+      //     },time)
+      //   })
+      // }
+
+      // promose(3000).then(res=>{
+      //   res.object();
+      // })
+      // function timeout(time,fn){
+      //   return new Promise((resovle,reject)=>{
+      //     setTimeout(()=>{
+      //       resovle(fn())
+      //   },time)
+      //   })
+
+      // }
+      // async function test(time,fn){
+      //   let val = await timeout(time,fn)
+      //   console.log(222)
+      // }
+      // test(1000,function(){
+      //   console.log(111)
+      // })
+      // for (var i = 0; i < 5; i++) {
+      //   (function(i) {
+      //     return setTimeout(function() {
+      //       console.log(i);
+      //     }, 0);
+      //   })(i);
+      // }
+      // var i;
+      // for (let i = 0; i < 5; i++) {
+      //     setTimeout(function() {
+      //       console.log(i);
+      //     }, 0);
+      // }
+
+      // {
+      //   let a = 0;
+      //   console.log(a)
+      // }
+      // {
+      //   let a = 1;
+      //   console.log(a)
+      // }
+      // console.time('time')      
+      // var array = [];
+      // for (let i = 0; i < 100000; i++) {
+      //   array.push(i) 
+      // }
+      // var t = arr[99999];//0.028
+      // console.timeEnd('time')
+
+      // instanceof运算符
+      //       概述
+      // instanceof运算符用来判断一个构造函数的prototype属性所指向的对象是否存在另外一个要检测对象的原型链上
+//       描述
+// instanceof 运算符用来检测 constructor.prototype 是否存在于参数 object 的原型链上
+      class Do{
+        do(){
+
+        }
+      }
+      class Do2{
+        do2(){
+
+        }
+      }
+      class B extends Do{
+          b(){
+            
+          }
+      };
+      let b2 = new B()
+      console.log(b2)
+      console.log(b2 instanceof Do)
+      console.log(b2 instanceof Do2)
+    </script>
+  </body>
+</html>

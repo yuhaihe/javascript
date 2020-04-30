@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <title>Document</title>
+  <style>
+    .circle{
+      display: block;
+      width: 40px;
+      height: 40px; 
+      background: red;
+      transition:all .5s linear ;
+      border-radius: 50%;
+    }
+    .circle:hover{
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+      <span class="circle"></span>
+  </div>
+  <script>
+    function asyncHandler(val) {
+      return new Promise(function (resovle, reject) {
+        let xhr = new XMLHttpRequest()
+        xhr.open('get', './data.json', true)
+        xhr.send()
+        xhr.onreadystatechange = function (e) {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status <= 300) {
+              if(val){
+                resovle(val)
+              }else{
+                throw Error('error')
+                
+              }
+            } else {
+              reject('error')
+            }
+          }
+        }
+      })
+    }
+    // 串联
+    // let a = asyncHandler('1');
+    // let b = asyncHandler('2');
+    const load = async function(){
+      let a =await asyncHandler('1')
+      console.log(a)
+      let b = await asyncHandler('2')
+      console.log(b)
+    }
+    load()
+    // a.then(res => {
+    //   console.log(res)
+    //   return b
+    // }).then(res=>{
+    //   console.log(res)
+    // })
+  
+    // Promise.all([a,b]).then(datas=>{
+    //   console.log(datas)
+    // })
+    // Promise.race([a,b]).then(data=>{
+    //   console.log(data)
+    // })
+    // let j = $.ajax('./data.json')
+    // j.done((data)=>{
+    //   console.log(data)
+    // }).done(data=>{
+    //   console.log(data)
+    // })
+  </script>
+</body>
+
+</html>

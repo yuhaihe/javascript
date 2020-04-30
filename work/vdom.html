@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fun(n) {
+      /*
+        j  --计算数值
+        k  -->前一个
+        l  -->前前一个
+      */
+      var j = 0,
+        k = 0,
+        l = 0;
+      for (var i = 0; i <= n; i++) {
+        if (i === 0) {
+          j = 1;
+          k = 0;
+          l = 0;
+        } else if (i === 1) {
+          j = 1;
+          k = 1;
+          l = 0;
+        } else {
+          l = k;
+          k = j;
+          j = l + k;
+        }
+      }
+      console.log(j)
+    }
+    // fun(3);
+    let arr = [1, 4, 2, 5, 7, 2]
+    const util = {
+      unique: function (arr) {
+        let set = new Set(arr)
+        return Array.from(set)
+      },
+      sort:function(arr){
+        let new_arr = [...arr]
+        for (let i = 0; i < new_arr.length; i++) {
+          for (let j = i+1; j < new_arr.length; j++) {
+              if(new_arr[i]<new_arr[j]){
+                [new_arr[i],new_arr[j]] = [new_arr[j],new_arr[i]]
+              }
+          }
+        }
+        return new_arr
+      }
+    }
+    let m_arr = util.unique(arr)
+    let s_arr = util.sort(m_arr)
+    // console.log(s_arr)
+
+
+
+   
+  </script>
+  <script src="./diff.js"></script>
+</body>
+
+</html>

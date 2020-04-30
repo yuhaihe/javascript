@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>11111111</div>
+  <script>
+    var Observer = (function(){
+      var _message = {};
+      return {
+        register:function(type,fn){
+          if(typeof _message[type] === 'undefined'){
+            _message[type] = [fn];
+          }else{
+            _message[type].push(fn)
+          }
+        },
+        fire:function(type,args){
+          if(!_message[type]){
+              return;
+          }
+          var events = {
+            type:type,
+            args:args||{}
+          },
+          i = 0,
+          len = _message[type].length;
+          for ( ; i < len; i++) {
+            _message[type][i].call(this,events)
+          }
+        },
+        remove:function(type,fn){
+          if(_message[type] instanceof Array){
+            var i = _message[type].length-1;
+            for (; i >=0 ; i--) {
+              _message[type][i] === fn && _message[type].splice(i,1)
+            }
+          }
+        },
+      }
+    })();
+    Observer.register('test',function(e){
+      console.log(e.type,e.args.msg);
+    })
+    Observer.register('test',function(e){
+      console.log(111);
+    })
+    // console.log(Observer)
+    // Observer.fire('test',{msg:'传递参数'});
+
+    function $(id){
+      return document.getElementById(id);
+    }
+
+    (function(){
+      function addMsgItem(e){
+        var text = e.args.text,
+            ul = $('msg'),
+            li = document.createElement('li'),
+            span = document.createElement('span');
+        li.innerHTML = text;
+        span.onclick = function(){
+          ul.removeChild(li);
+          Observer.fire('removeCommentMessage',{
+            num:-1
+          })
+        }
+        li.appendChild(span);
+        ul.appendChild(li);
+      }
+      Observer.register('addCommentMessage',addMsgItem);
+    })();
+ 
+ 
+    var Event = {
+    // 通过on接口监听事件eventName
+    // 如果事件eventName被触发，则执行callback回调函数
+    on: function (eventName, callback) {
+        //你的代码
+        if(!this.handlers){
+          Object.defineProperty(this,'handlers',{
+            value:{},
+            enumerable:false,
+            configurable:true,
+            writable:true
+          })
+          // this.handlers = {}
+        }
+        if(!this.handlers[eventName]){
+          this.handlers[eventName] = []
+        }
+        this.handlers[eventName].push(callback)
+    },
+    // 触发事件 eventName
+    emit: function (eventName) {
+        //你的代码
+      if(this.handlers[eventName]){
+        for(var i=0;i<this.handlers[eventName].length;i++){
+          this.handlers[eventName][i](arguments[1])
+        }
+      }
+    }
+  };
+Event.on('test', function (result) {
+    console.log(result);
+});
+Event.on('test', function () {
+    console.log('test');
+});
+Event.emit('test', 'hello world'); // 输出 'hello world' 和 'test'
+// 测试2
+var person1 = {};
+var person2 = {};
+Object.assign(person1, Event);
+Object.assign(person2, Event);
+person1.on('call1', function () {
+    console.log('person1');
+});
+person2.on('call2', function () {
+    console.log('person2');
+});
+person1.emit('call1'); // 输出 'person1'
+person1.emit('call2'); // 没有输出
+person2.emit('call1'); // 没有输出
+person2.emit('call2'); // 输出 'person2'
+  </script>
+</body>
+</html>

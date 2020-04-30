@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li>{{name}}</li>
+      <li>{{age}}</li>
+    </ul>
+  </div>
+  <input type="text" id="text" value="">
+  <script>
+    // let vm = new Vue({
+    //   el: '#app',
+    //   data: {
+    //     name: 'zhangsan',
+    //     age: 20
+    //   }
+    // })
+    let obj = {}
+    let _name = 'zhangsan'
+    Object.defineProperty(obj, 'name', {
+      get: function () {
+        console.log('get', _name)
+        return _name
+      },
+      set: function (newValue) {
+        console.log('set', newValue)
+        _name = newValue
+      }
+    })
+
+    // let elem2 = document.getElementById('text')
+    // let data2 = {
+
+    // }
+    // let  _text = 123
+    // elem2.value = _text
+    // Object.defineProperty(data2,'_text',{
+    //   set:function(newv){
+    //     elem2.value = newv
+    //     _text = newv
+    //   },
+    //   get:function(){
+
+    //     return _text
+    //   }
+    // })
+    // elem2.oninput = function(e){
+    //   data2._text = elem2.value
+    // }
+    // class Fun {
+    //   constructor(param) {
+    //     this.vm = param
+    //     this.text = param.data.text
+    //     this.elem = document.getElementById(param.el)
+    //     Object.defineProperty(param.data, 'text', {
+    //       set: function () {
+    //         console.log(1)
+    //       },
+    //       get: function () {
+    //         console.log(2)
+    //       }
+    //     })
+    //     this.render()
+    //   }
+
+    //   render() {
+    //     this.elem.value = this.text
+    //     this.elem.oninput = function (e) {
+    //       console.log(this)
+    //       this.text = f.elem.value
+    //     }
+    //   }
+    // }
+    // let f = new Fun({
+    //   el: 'text',
+    //   data: {
+    //     text: 'text'
+    //   }
+    // })
+
+    var vm = {}
+    var data = {
+      name: 'ads',
+      age: 20
+    }
+    data.a=1
+    for (var key in data) {
+      console.log(key)
+      if (data.hasOwnProperty(key)) {
+        (function (key) {
+          Object.defineProperty(vm, key, {
+            get:function(){
+              return data[key]
+            },
+            set:function(newV){
+              data[key] =newV
+            }
+          })
+        })(key)
+      }
+    }
+  </script>
+</body>
+
+</html>
