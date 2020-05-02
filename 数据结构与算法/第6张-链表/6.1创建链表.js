@@ -130,19 +130,19 @@ export default class LinkedList {
     }
 }
 
-const list = new LinkedList();
-list.push(15);
-list.push(10);
-list.push(11);
-list.push(13);
-console.log(list.toString());
-console.log(list.getElementAt(1));
-console.log(list.removeAt(1));
-console.log(list.toString());
-console.log(list.insert(100, 0));
-console.log(list.toString());
-console.log(list.remove(13));
-console.log(list.toString());
-console.log(list.isEmpty());
-console.log(list.size());
-console.log(list.getHead());
+// const list = new LinkedList();
+// list.push(15);
+// list.push(10);
+// list.push(11);
+// list.push(13);
+// console.log(list.toString());
+// console.log(list.getElementAt(1));
+// console.log(list.removeAt(1));
+// console.log(list.toString());
+// console.log(list.insert(100, 0));
+// console.log(list.toString());
+// console.log(list.remove(13));
+// console.log(list.toString());
+// console.log(list.isEmpty());
+// console.log(list.size());
+// console.log(list.getHead());
