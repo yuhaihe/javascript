@@ -14,7 +14,6 @@ const intersection = (setA, setB) => {
             intersectionSet.add(value);
         }
     });
-
     return intersectionSet;
 };
 
