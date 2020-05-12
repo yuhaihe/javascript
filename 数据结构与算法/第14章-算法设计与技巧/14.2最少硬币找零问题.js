@@ -19,6 +19,7 @@ function minCoinChange(coins, amount) {
       if (newAmount >= 0) {
         newMin = makeChange(newAmount);
       }
+      
       // if(newAmount>=0&&)
     }
   };
