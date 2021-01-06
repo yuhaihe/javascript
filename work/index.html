@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   11111111
+  <script>
+    let reg = /{{(\w+)}}/ig;
+    let str = '今天我想吃{{eat}},然后{{sleep}}';
+    const data = {
+      eat: '苹果',
+      sleep: '睡觉'
+    }
+    let d = str;
+    str.replace(reg, function (s, n1) {
+      str = str.replace(s, data[n1])
+    })
+    console.log(str)
+  </script>
 </body>
+
 </html>

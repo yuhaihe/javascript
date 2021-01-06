@@ -1,9 +1,16 @@
-// var obj = {a:1,b:2};
-// var arr = [...10000];
-// var bool = true;
-// var un = undefined;
-// var nu = null;
-// console.log(arr)
-// console.time('a')
-// console.timeEnd('a')
-// console.log(arr.toString());
+function formatAmount(amount) {
+  if (amount == null) {
+    return '0';
+  }
+  if (typeof amount === 'number' && amount.toFixed) {
+    amount = amount.toFixed(2);
+  }
+  amount = amount.split('').reverse().join('')
+  amount = amount.replace(/(\d{3}(?=\d))/g, function($1, $2) {
+    return $1 + ','
+  })
+  amount = amount.split('').reverse().join('')
+  return amount;
+}
+
+console.log(formatAmount(14524123.32))
