@@ -56,7 +56,7 @@ const fadeImg = new FadeLoopImg(
 // console.log(fadeImg.getImageLength());
 // console.log(fadeImg.getContainer());
 
-// 原型继承
+// 原型继承  这里是浅拷贝
 function prototypeExtend() {
     const F = function () {}
     const args = arguments;
@@ -75,8 +75,13 @@ const penguin = prototypeExtend({
         console.log('游泳速度' + this.speed);
     }
 })
-console.log(penguin)
 penguin.run = function() {
     console.log('奔跑速度' + this.speed);
 }
-penguin.run();
+// penguin.run();
+
+const obj = {a: {a:1}};
+let b = prototypeExtend(obj);
+b.a.a = 3;
+console.log(b)
+console.log(obj.a.a)

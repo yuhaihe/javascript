@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <script>
+        class Jquery {
+            constructor(selector) {
+                const result = document.querySelectorAll(selector);
+                this.length = result.length;
+                for (let i = 0; i < result.length; i++) {
+                    this[i] = result[i]
+                }
+                this.selector = selector;
+            }
+
+            get(index) {
+                return this[index];
+            }
+
+            each(fn) {
+                for (let i = 0; i < this.length; i++) {
+                    fn(this[i], i);
+                }
+            }
+            on(type, fn) {
+                this.each(elem => {
+                    elem.addEventListener(type, fn, false);
+                })
+            }
+        }
+        // 扩展
+        Jquery.prototype.dialog = function() {
+            alert(this.length)
+        }
+        window.$ = (selector) => {
+            return new Jquery(selector)
+        };
+        const $p = $('p')
+        console.log($p.get(2))
+
+        $p.each((item, index) => console.log(index))
+
+        $p.on('click', () => console.log('click'));
+    </script>
+</body>
+
+</html>
