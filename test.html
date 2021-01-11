@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <div>123</div>
-    <script>
-      console.log(1)
-      window.onload = function() {
-          console.log(2)
+  <div id="app">
+    <a href="">a1</a>
+    <a href="">a2</a>
+    <span class="sp sp2">span</span>
+    <a href="">a3</a>
+    <a href="">a4</a>
+  </div>
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', './t.json', true);
+    xhr.send();
+
+    xhr.onreadystatechange = function (e) {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log(JSON.parse(xhr.response))
+        }
       }
-    </script>
+    }
+
+  </script>
 </body>
+
 </html>
