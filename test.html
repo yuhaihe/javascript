@@ -8,23 +8,11 @@
 </head>
 
 <body>
-  <div id="app">
-    <a href="">a1</a>
-    <a href="">a2</a>
-    <span class="sp sp2">span</span>
-    <a href="">a3</a>
-    <a href="">a4</a>
-  </div>
-  <script>
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', './t.json', true);
-    xhr.send();
-
-    xhr.onreadystatechange = function (e) {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          console.log(JSON.parse(xhr.response))
-        }
+    <input >123</input>
+    <script>
+      const d = document.querySelector('input');
+      d.oninput = function(e) {
+          console.log(this.nodeType)
       }
     }
 
