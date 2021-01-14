@@ -3,21 +3,27 @@
  */
 
 class Node {
-  constructor (val) {
-    this.value = val;
+  constructor(value) {
+    this.value = value;
     this.next = null;
   }
 }
 
+class DoubleNode extends Node{
+  constructor(value){
+    super(value);
+    this.prev = null;
+  }
+}
 class LinkList {
-  constructor () {
-    this.count = 0;
+  constructor() {
     this.head = null;
+    this.count = 0;
   }
 
-  push (val) {
+  push(val) {
     const node = new Node(val);
-    if (this.isEmpty()) {
+    if (this.head == null) {
       this.head = node;
     } else {
       let current = this.head;
@@ -28,43 +34,49 @@ class LinkList {
     }
 
     this.count++;
-    return node;
+    return this.count;
   }
 
-  removeAt (index) {
-    if (index >= 0 && index <= this.count) {
-      let current = this.head;
+  removeAt(index) {
+    if (index >= 0 && index < this.count) {
+      let head = this.head;
       if (index === 0) {
-        this.head = current.next;
+        this.head = head.next;
       } else {
+        // 上一个
         let prev = this.getElementAt(index - 1);
-        current = prev.next;
+        let current = prev.next;
         prev.next = current.next;
       }
       this.count--;
-      return current.value;
+      return head.value;
     }
 
     return undefined;
   }
-  getElementAt (index) {
-    if (index >= 0 && index <= this.count) {
-      let current = this.head;
-      for (let i = 0; i < index; i++) {
-        current = current.next;
+  getElementAt(index) {
+    if (index >= 0 && index < this.count) {
+      let current;
+      if (index === 0) {
+        current = this.head;
+      } else {
+        current = this.head;
+        for (let i = 0; i < index; i++) {
+          current = current.next;
+        }
       }
       return current;
     }
-
     return undefined;
   }
-  insert (element, index) {
-    if (index >= 0 && index <= this.count) {
-      let node = new Node(element);
+  insert(element, index) {
+    if (index >= 0 && index < this.count) {
+      let node = new Node(element)
       if (index === 0) {
         node.next = this.head;
         this.head = node;
       } else {
+        // 上一个
         let prev = this.getElementAt(index - 1);
         let next = prev.next;
         node.next = next;
@@ -76,52 +88,116 @@ class LinkList {
 
     return undefined;
   }
-  indexOf (element) {
-    let current = this.head;
-    for (let index = 0; index < this.count; index++) {
-      if (current.value === element) {
-        return index;
-      }
-      current = current.next;
-    }
-
-    return undefined;
-  }
-  getHead () {
-    return this.head;
-  }
-  remove (element) {
+  indexOf(element) {
     let current = this.head;
     for (let i = 0; i < this.count; i++) {
       if (current.value === element) {
-        return this.removeAt(i);
+        return i;
       }
       current = current.next;
     }
 
     return undefined;
   }
-  isEmpty () {
+  getHead() {
+    return this.head;
+  }
+  remove(element) {
+    const index = this.indexOf(element);
+    this.removeAt(index);
+  }
+  isEmpty() {
     return this.size() === 0;
   }
-  size () {
+  size() {
     return this.count;
   }
-  toString () {
+  toString() {
     let current = this.head;
     let str = `${current.value}`;
     for (let i = 1; i < this.count; i++) {
       current = current.next;
-      str = `${str}, ${current.value}`
+      str = `${str},${current.value}`;
     }
     return str;
   }
 }
 
+LinkList.prototype.entries = function() {
+  let current = this.head;
+  const count = this.count; // 3
+  return new function() {
+    this.selfIndex = 0;
+    this.next = function() {
+      if(this.selfIndex > count || current == null) {
+        return {value: undefined, done: true};
+      }
+      let [index, value] = [this.selfIndex, current.value];
+      this.selfIndex++;
+      let done = count === this.selfIndex;
 
+      current = current.next;
+      return {index, value, done};
+    }
+  }
+}
+
+class DoubleLinkList extends LinkList {
+  constructor() {
+    super();
+  }
+  push(val) {
+    const node = new DoubleNode(val);
+    if (this.head == null) {
+      this.head = node;
+    } else {
+      let current = this.head;
+      while (current.next != null) {
+        current = current.next;
+      }
+      node.prev = current;
+      current.next = node;
+    }
+    this.count++;
+    return this.count;
+  }
+  insert(element, index) {
+    if (index >= 0 && index < this.count) {
+      let node = new DoubleNode(element)
+      let head = this.head;
+      if (index === 0) {
+        head.prev = node;
+        node.next = head;
+        this.head = node;
+      } else {
+        // 上一个
+        let prev = this.getElementAt(index - 1);
+        let next = prev.next;
+        node.next = next;
+        node.prev = prev;
+        prev.next = node;
+      }
+      this.count++;
+      return element;
+    }
+
+    return undefined;
+  }
+}
 let l = new LinkList();
-l.push('a');
-l.push('b');
-l.push('c');
-l.push('end')
-console.log(l.toString());
+l.push(1);
+l.push(2);
+l.push(3);
+l.insert(1.5, 1)
+const item = l.entries();
+console.log(item.next())
+console.log(item.next())
+console.log(item.next())
+console.log(item.next())
+console.log(item.next())
+console.log(item.next())
+console.log(item.next())
+console.log(item.next())
+
+
+
