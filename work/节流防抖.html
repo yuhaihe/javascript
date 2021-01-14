@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #ccc;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    input {
+      margin-top: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div" draggable="true">可拖拽</div>
+  <input type="text" name="" id="">
+
+  <script>
+    const btn = document.getElementsByTagName('div')[0];
+    btn.addEventListener('drag', throttle(function(e) {
+      console.log(e.offsetX, e.offsetY)
+      console.log(this)
+      this.style.left = e.offsetX + 'px';
+      this.style.top = e.offsetY + 'px';
+    }, 300), false);
+
+    // 节流
+    function throttle(fn, delay = 500) {
+      let timer = null;
+
+      return function () {
+        if (timer) {
+          return
+        }
+        timer = setTimeout(() => {
+          fn.apply(this, arguments);
+          timer = null;
+        }, delay);
+      }
+    }
+
+    const input = document.getElementsByTagName('input')[0];
+    input.addEventListener('keyup', debounce(function () {
+      console.log(this.value);
+    }, 500))
+
+    // 防抖
+    function debounce(fn, delay = 500) {
+      let timer = null;
+
+      return function () {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          fn.apply(this, arguments);
+          timer = null;
+        }, delay);
+      }
+    }
+  </script>
+</body>
+
+</html>

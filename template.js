@@ -2,10 +2,10 @@
  * push,removeAt,getElementAt,insert,indexOf,remove,isEmpty,size,getHead,toString
  */
 
-class NodeList {
+class Node {
   constructor (val) {
     this.value = val;
-    this.next = undefined;
+    this.next = null;
   }
 }
 
@@ -16,93 +16,90 @@ class LinkList {
   }
 
   push (val) {
-    const node = new NodeList(val);
-    if (this.head == null) {
-      this.head = node
+    const node = new Node(val);
+    if (this.isEmpty()) {
+      this.head = node;
     } else {
-      let cur = this.head;
-      while (cur.next != null) {
-        cur = cur.next;
+      let current = this.head;
+      while (current.next != null) {
+        current = current.next;
       }
-      cur.next = node;
+      current.next = node;
     }
+
     this.count++;
+    return node;
   }
 
   removeAt (index) {
-    if (index >= 0 && index < this.count) {
+    if (index >= 0 && index <= this.count) {
       let current = this.head;
       if (index === 0) {
         this.head = current.next;
       } else {
-        let previous;
-        for (let i = 0; i < index; i++) {
-          previous = current;
-          current = current.next;
-        }
-        previous.next = current.next;
+        let prev = this.getElementAt(index - 1);
+        current = prev.next;
+        prev.next = current.next;
       }
       this.count--;
       return current.value;
-    } else {
-      return undefined;
     }
+
+    return undefined;
   }
   getElementAt (index) {
     if (index >= 0 && index <= this.count) {
-      let node = this.head;
+      let current = this.head;
       for (let i = 0; i < index; i++) {
-        node = node.next;
+        current = current.next;
       }
-      return node;
+      return current;
     }
 
     return undefined;
   }
   insert (element, index) {
     if (index >= 0 && index <= this.count) {
-      let node = new NodeList(element);
+      let node = new Node(element);
       if (index === 0) {
         node.next = this.head;
         this.head = node;
       } else {
-        let previous = this.getElementAt(--index);
-        let current = previous.next;
-        previous.next = node;
-        node.next = current;
+        let prev = this.getElementAt(index - 1);
+        let next = prev.next;
+        node.next = next;
+        prev.next = node;
       }
       this.count++;
-      return true;
+      return element;
     }
 
     return undefined;
   }
   indexOf (element) {
-    let node = this.head;
-    for (let i = 0; i < this.count; i++) {
-      if (node.value === element) {
-        return i;
+    let current = this.head;
+    for (let index = 0; index < this.count; index++) {
+      if (current.value === element) {
+        return index;
       }
-      node = node.next;
+      current = current.next;
     }
 
-    return -1;
+    return undefined;
   }
   getHead () {
     return this.head;
   }
   remove (element) {
-    let node = this.head;
+    let current = this.head;
     for (let i = 0; i < this.count; i++) {
-      if (node.value === element) {
-        this.removeAt(i);
-        this.count--;
-        return i;
+      if (current.value === element) {
+        return this.removeAt(i);
       }
-      node = node.next;
+      current = current.next;
     }
 
-    return false;
+    return undefined;
   }
   isEmpty () {
     return this.size() === 0;
@@ -111,21 +108,20 @@ class LinkList {
     return this.count;
   }
   toString () {
-    if (this.isEmpty()) return '';
-    let str = `${this.head.value}`;
-    let current = this.head.next;
-    for (let index = 1; index < this.size(); index++) {
-      str = `${str}, ${current.value}`
+    let current = this.head;
+    let str = `${current.value}`;
+    for (let i = 1; i < this.count; i++) {
       current = current.next;
+      str = `${str}, ${current.value}`
     }
     return str;
   }
 }
 
+
 let l = new LinkList();
-l.push(1);
-l.push(2);
-l.push(3);
-l.push(4);
-l.push('five');
+l.push('a');
+l.push('b');
+l.push('c');
+l.push('end')
 console.log(l.toString());
