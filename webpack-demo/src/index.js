@@ -1,5 +1,7 @@
-import util from './util';
-import { sum } from './test';
+import Vue from 'vue';
+import Index from './components/index';
 
-console.log(util.toStr(1233));
-console.log(sum(1,3));
+const app = new Vue({
+    el: '#app',
+    components: { Index },
+});

@@ -3,12 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-    mode:  'development',
-    entry: "./src/index.js",
-    // {
-    //     pageA: "./src/index.js",
-    //     pageB: "./src/index2.js"
-    // },
+    // mode:  'development',
+    entry: ["./src/index.js", "./src/index2.js"],
     output: {
         filename: '[name].bundle.js',
         path: path.join(__dirname, 'dist')
@@ -39,13 +35,13 @@ module.exports = {
             template: path.join(__dirname, 'src/index.html'),
             filename: 'index.html'
         }),
-        // new HtmlWebpackPlugin({
-        //     template: path.join(__dirname, 'src/index2.html'),
-        //     filename: 'index2.html'
-        // }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/index2.html'),
+            filename: 'index2.html'
+        }),
     ],
     devServer: {
-        port: 3000,
+        port: 8000,
         contentBase: path.join(__dirname, 'dist'),
         open: true
     }
