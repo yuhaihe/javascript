@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <Event msg="Welcome to Your Vue.js App"/>
+    <index/>
   </div>
 </template>
 
 <script>
-import Event from './components/Form.vue'
+import index from './components/AdvanceUse/index'
 
 export default {
   name: 'App',
   components: {
-    Event
+    index
   }
 }
 </script>
