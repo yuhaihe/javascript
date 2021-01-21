@@ -20,7 +20,7 @@ document.getElementById('btn-change').onclick = function() {
   const newVnode = h('ul#list', {}, [
     h('li.Item', {}, 'Item1'),
     h('li.Item', {}, 'ItemB'),
-    h('li.Item', {}, 'Item3'),
+    h('li.Item', {}, 'snabbdom'),
   ]);
   patch(vnode, newVnode);
 }
