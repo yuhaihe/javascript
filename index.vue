@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <child @change="change" :list = "list"/>
+  <div>111
+    <!-- <child @change="change" :list = "list"/> -->
   </div>
 </template>
 <script>
-import child from './child';
+// import child from './child.vue';
 export default {
-components: {child},
+// components: {child},
   data() {
     return {
       list: [
