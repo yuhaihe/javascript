@@ -26,12 +26,21 @@ const compiler = require('vue-template-compiler');
 // with(this){return _c('div',[(flag==='a')?_c('p',[_v("A")]):_c('p',[_v("B")])])}
 
 // 循环
-const template = `
-    <ul>
-        <li v-for="item in list" :key="item.id">{{item.title}}</li>
-    </ul>
-`
+// const template = `
+//     <ul>
+//         <li v-for="item in list" :key="item.id">{{item.title}}</li>
+//     </ul>
+// `
 // with(this){return _c('ul',_l((list),function(item){return _c('li',{key:item.id},[_v(_s(item.title))])}),0)}
+
+// 事件
+// const template = `<button @click="handler">sava</button>`;
+// with(this){return _c('button',{on:{"click":handler}},[_v("sava")])}
+
+// v-model
+const template = `<input v-model="name"/>`;
+// 主要看input事件
+// with(this){return _c('input',{directives:[{name:"model",rawName:"v-model",value:(name),expression:"name"}],domProps:{"value":(name)},on:{"input":function($event){if($event.target.composing)return;name=$event.target.value}}})}
 
 // 编译后_含义
 // function installRenderHelpers (target: any) {
