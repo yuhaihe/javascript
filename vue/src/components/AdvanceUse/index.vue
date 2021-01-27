@@ -2,8 +2,13 @@
   <div>
     <p>vue高级特性</p>
     <!-- 自定义v-model -->
-    <p>{{name}}</p>
-    <CustomVModel v-model="name" @focus="name='focus'"/>
+    <p>{{ name }}</p>
+    <CustomVModel
+      v-if="name === 'hayho'"
+      v-model="name"
+      @focus="name = 'focus'"
+    />
+    <button @click="name = 'text'">on</button>
     <!-- <NextTick/> -->
     <!-- <SlotDemo :url="website.url">
         <template #header>
@@ -26,13 +31,13 @@
     <!-- 动态组件 -->
     <!-- <component :is="NextTickName" /> -->
 
-  <!-- <KeepAlive/> -->
-  <!-- <Mixin/> -->
+    <!-- <KeepAlive/> -->
+    <!-- <Mixin/> -->
   </div>
 </template>
 
 <script>
-import CustomVModel from './CustomVModel'
+import CustomVModel from "./CustomVModel";
 // import NextTick from './NextTick'
 // import SlotDemo from './Slot'
 // import ScopeSlot from './ScopeSlot'
@@ -40,21 +45,19 @@ import CustomVModel from './CustomVModel'
 // import Mixin from './Mixin';
 
 export default {
-  components: {CustomVModel},
+  components: { CustomVModel },
   data() {
     return {
-      name: 'hayho',
+      name: "hayho",
       website: {
-        url: 'http://www.baidu.com',
-        title: 'baidu',
-        subTitle: '中文最大的搜索引擎'
+        url: "http://www.baidu.com",
+        title: "baidu",
+        subTitle: "中文最大的搜索引擎",
       },
-      NextTickName: 'NextTick'
-    }
-  }
-}
+      NextTickName: "NextTick",
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

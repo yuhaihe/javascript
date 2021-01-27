@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>history API test</p>
+    <button id="btn1">修改 url</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('load', location.pathname)
+        })
+        document.getElementById('btn1').onclick = () => {
+            const state = { name: 'page1' }
+            console.log('切换路由到','page1')
+            history.pushState(state, '', 'page1')
+        }
+        window.onpopstate = (e) => {
+            console.log('onpopstate', e.state, location.pathname)
+        }
+    </script>
+</body>
+
+</html>

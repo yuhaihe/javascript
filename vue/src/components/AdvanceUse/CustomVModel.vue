@@ -16,18 +16,36 @@
 <script>
 export default {
   model: {
-    prop: 'text', //对应props text
-    event: 'change',
+    prop: "text", //对应props text
+    event: "change",
   },
   props: {
     text: {
       type: String,
       default() {
-        return ''
+        return "";
       },
     },
   },
-}
+  data() {
+    return {
+      name: 'aa',
+      f: function(e) {
+        console.log(e);
+      },
+    };
+  },
+  mounted() {
+    window.addEventListener("resize", this.f);
+  },
+  beforeDestroy() {
+    // window.removeEventListener("resize", this.f);
+  },
+  destroyed() {
+    console.log(this.name)
+    window.removeEventListener("resize", this.f);
+  },
+};
 </script>
 
 <style></style>
