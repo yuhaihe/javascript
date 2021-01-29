@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config build-min-extract-css/webpack.prod.js",
-    "dev": "webpack-dev-server --config build-min-extract-css/webpack.dev.js"
+    "build": "webpack --config build-splitChunks/webpack.prod.js",
+    "dev": "webpack-dev-server --config build-splitChunks/webpack.dev.js"
   },
   "author": "",
   "license": "ISC",

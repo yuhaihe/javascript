@@ -7,6 +7,9 @@ const sumRes = sum(10, 20)
 console.log('index page')
 console.log('sumRes', sumRes)
 
+import _ from 'lodash';
+
+console.log(_.cloneDeep)
 // // 增加，开启热更新之后的代码逻辑
 // if (module.hot) {
 //     module.hot.accept(['./math'], () => {
