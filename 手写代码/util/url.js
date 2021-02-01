@@ -21,7 +21,7 @@ function getUrlParam(sUrl, sKey) {
     });
     return sKey ? param[sKey] || '' : param;
 }
-console.log(getUrlParam(url))
+console.log(getUrlParam(url));
 
 
 

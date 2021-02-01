@@ -6,18 +6,19 @@ let obj = {
     }
   }
 };
-
+let arr = [{a: 1}]
 function cloneDeep (obj) {
-  if(obj == null || typeof obj !== 'object'){
+  if(typeof obj !== 'object' || obj == null ){
     return obj;
   }
-  let newObj = obj instanceof Array ? [] :  {};
+
+  let data = obj instanceof Array ? [] : {};
   for (const key in obj) {
-      newObj[key] = cloneDeep(obj[key]);
+    data[key] = cloneDeep(obj[key]);
   }
-  return newObj;
+  return data;
 }
 
-let copyObj = cloneDeep(obj);
-copyObj.say.text = 'change';
-console.log(obj.say.text);
+let copyObj = cloneDeep(arr);
+copyObj[0].a = 'change';
+console.log(arr[0].a);
