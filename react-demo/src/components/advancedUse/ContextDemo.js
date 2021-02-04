@@ -2,7 +2,7 @@ import React from 'react'
 
 // 创建 Context 填入默认值（任何一个 js 变量）
 const ThemeContext = React.createContext('light')
-
+console.log(ThemeContext)
 // 底层组件 - 函数是组件
 function ThemeLink (props) {
     // const theme = this.context // 会报错。函数式组件没有实例，即没有 this
@@ -29,7 +29,7 @@ ThemedButton.contextType = ThemeContext // 指定 contextType 读取当前的 th
 function Toolbar(props) {
     return (
         <div>
-            <ThemedButton />
+            {/* <ThemedButton /> */}
             <ThemeLink />
         </div>
     )
@@ -52,6 +52,8 @@ class App extends React.Component {
     changeTheme = () => {
         this.setState({
             theme: this.state.theme === 'light' ? 'dark' : 'light'
+        }, () => {
+            console.log(ThemeContext)
         })
     }
 }

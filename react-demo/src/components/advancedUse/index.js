@@ -1,9 +1,9 @@
 import React from 'react'
-// import ContextDemo from './ContextDemo'
+import ContextDemo from './ContextDemo'
 // import UncontrolledDemo from './UncontrolledDemo'
 // import PortalsDemo from './PortalsDemo'
 // import LazyDemo from './LazyDemo'
-import SCUDemo from './SCUDemo'
+// import SCUDemo from './SCUDemo'
 // import SCUDemo2 from './SCUDemo2'
 // import PureComponentDemo from './PureComponentDemo'
 // import HOCDemo from './HOCDemo'
@@ -16,11 +16,11 @@ class AdvancedUse extends React.Component {
   render() {
     return (
       <div>
-        {/* <ContextDemo/> */}
+        <ContextDemo/>
         {/* <UncontrolledDemo /> */}
         {/* <PortalsDemo>Modal 内容</PortalsDemo> */}
         {/* <LazyDemo/> */}
-        <SCUDemo/>
+        {/* <SCUDemo/> */}
         {/* <SCUDemo2/> */}
         {/* <PureComponentDemo/> */}
         {/* <HOCDemo a="100"/> */}
