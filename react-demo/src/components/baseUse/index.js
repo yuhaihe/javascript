@@ -4,10 +4,10 @@ import React from 'react'
 // import ListDemo from './ListDemo'
 // import EventDemo from './EventDemo'
 // import FormDemo from './FormDemo'
-import PropsDemo from './PropsDemo'
+// import PropsDemo from './PropsDemo'
 // import StateDemo from './StateDemo'
 // import StateDemo1 from './StateDemo1'
-
+import Event from './Event';
 class BaseUseDemo extends React.Component {
     constructor(props) {
         super(props)
@@ -19,9 +19,10 @@ class BaseUseDemo extends React.Component {
             {/* <ListDemo/> */}
             {/* <EventDemo/> */}
             {/* <FormDemo/> */}
-            <PropsDemo/>
+            {/* <PropsDemo/> */}
             {/* <StateDemo/> */}
             {/* <StateDemo1/> */}
+            <Event/>
         </div>
     }
 }

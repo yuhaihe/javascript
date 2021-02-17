@@ -53,33 +53,33 @@ class StateDemo extends React.Component {
 
         // 第四，state 异步更新的话，更新前会被合并 ----------------------------
         
-        // // 传入对象，会被合并（类似 Object.assign ）。执行结果只一次 +1
-        // this.setState({
-        //     count: this.state.count + 1
-        // })
-        // this.setState({
-        //     count: this.state.count + 1
-        // })
-        // this.setState({
-        //     count: this.state.count + 1
-        // })
+        // // 传入对象，会被合并（类似 Object.assign ）。执行结果只一次 +1(执行最后的)
+        this.setState({
+            count: this.state.count + 1
+        })
+        this.setState({
+            count: this.state.count + 9
+        })
+        this.setState({
+            count: this.state.count + 3
+        })
         
         // 传入函数，不会被合并。执行结果是 +3
-        this.setState((prevState, props) => {
-            return {
-                count: prevState.count + 1
-            }
-        })
-        this.setState((prevState, props) => {
-            return {
-                count: prevState.count + 1
-            }
-        })
-        this.setState((prevState, props) => {
-            return {
-                count: prevState.count + 1
-            }
-        })
+        // this.setState((prevState, props) => {
+        //     return {
+        //         count: prevState.count + 1
+        //     }
+        // })
+        // this.setState((prevState, props) => {
+        //     return {
+        //         count: prevState.count + 1
+        //     }
+        // })
+        // this.setState((prevState, props) => {
+        //     return {
+        //         count: prevState.count + 1
+        //     }
+        // })
     }
     bodyClickHandler = () => {
         this.setState({
