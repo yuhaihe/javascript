@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .toolTip {
+      position: absolute;
+      height: 56px;
+      width: 110px;
+      border: 0.5px solid #cccccc;
+      border-radius: 5px;
+      padding-left: 10px;
+      display: none;
+      font-size: 14px;
+      flex-flow: column;
+      justify-content: space-around;
+      background: #fff;
+    }
+
+    .toolTip .icon {
+      display: inline-block;
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+  </style>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="https://d3js.org/d3-axis.v1.js"></script>
+</head>
+
+<body>
+  <div>
+    <h3>国外疫情TOP10——百度</h3>
+    <!-- tooltip -->
+    <div class="toolTip">
+      <div class="country">美国</div>
+      <div class="incre">
+        <span class="icon"></span>新增：<span class="amount">18951</span>
+      </div>
+    </div>
+    <svg width="1000" height="600"></svg>
+  </div>
+  <script src="./柱形图.js"></script>
+</body>
+
+</html>
