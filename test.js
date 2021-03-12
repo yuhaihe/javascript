@@ -1,18 +1,12 @@
-var searchInsert = function (nums, target) {
-  let start = 0;
-  let end = nums.length - 1;
-  while (start <= end) {
-    let middle = (start + end) >> 1;
-    if (nums[middle] < target) {
-      start = middle + 1;
-    }  else {
-      end = middle - 1;
-    }
-  
+var maxScore = function(s) {
+  let max = 0;
+  let total1 = s.replace(/0/g, '').length;
+  let total0 = 0;
+  for (let i = 0; i < s.length-1; i++) {
+    s[i] === '0' ? total0++ : total1--;
+    max = Math.max(max, total0 + total1);
   }
-
-  return start;
+  return max;
 };
 
-const res = searchInsert( [1,3,5,6], 5);
-console.log(res);
+console.log(maxScore('011101'));
