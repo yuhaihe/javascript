@@ -1,0 +1,19 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hayho",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "minimist": "^1.2.5",
+    "progress": "^2.0.3"
+  },
+  "devDependencies": {
+    "cowsay": "^1.4.0"
+  }
+}

@@ -48,11 +48,11 @@ function observe (target) {
 
 // 准备数据
 let data = {
-  name: '张三',
-  age: 20,
-  info: {
-    address: '北京'
-  },
+  // name: '张三',
+  // age: 20,
+  // info: {
+  //   address: '北京'
+  // },
   nums: [10, 20, 30]
 }
 // 监听数据
@@ -63,5 +63,6 @@ observe(data);
 // data.age = 25;
 // data.name = '李四';
 // data.info.address = '上海';
-data.nums.push(40)
+// data.nums.push(40)
+data.nums = [200]
 
