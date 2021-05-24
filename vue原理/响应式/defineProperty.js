@@ -13,3 +13,4 @@ Object.defineProperty(data, 'name', {
 
 data.name = 'lisi';
 
+console.log(data.name);
