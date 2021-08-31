@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container div {
+      min-height: 100px;
+    }
+
+    .left {
+      background-color: red;
+      width: 300px;
+    }
+
+    .center {
+      background-color: yellow;
+    }
+
+    .right {
+      background-color: blue;
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 实现一个三栏布局(已知高度)左右宽度300px 中间自适应 你有几种方法 -->
+  <div class="container">
+    <!-- 浮动布局 -->
+    <!-- <style>
+    .fl-l { float: left;}
+    .fl-r { float: right;}
+    </style> -->
+    <!-- <div class="left fl-l">left</div>
+    <div class="right fl-r">right</div>
+    <div class="center">center</div> -->
+
+    <!-- position定位布局  -->
+    <!-- <style>
+        .container div{ position:  absolute;}
+        .p-l {left: 0;}
+        .p-r{right: 0;}
+        .p-c{left: 300px; right: 300px;}
+    </style>
+    <div class="left p-l">left</div>
+    <div class="center p-c">center</div>
+    <div class="right p-r">right</div> -->
+
+    <!-- flex布局  -->
+    <!-- <style>
+        .container{ display:  flex;width: 100%;}
+        .center{ flex:  1;}
+    </style>
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div> -->
+
+    <!-- table布局  -->
+    <!-- <style>
+        .container{ display:  table;width: 100%;  height: 100px;}
+        .container div {display: table-cell;}
+    </style>
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div> -->
+
+    <!-- grid布局 -->
+    <!-- <style>
+        .container{ display:  grid; grid-template-rows: 100px; grid-template-columns: 300px auto 300px;}
+    </style>
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div> -->
+
+    <!-- css tip -->
+    <!-- Caret-color 可以改变光标的颜色 可以尝试给input加上这个属性看看 -->
+    <!-- <input type="text" style="Caret-color: red;"> -->
+
+
+    <!-- shape-outside 可以改变盒子的形状，从而改变布局。 -->
+    
+
+    <!-- display: flow-root BFC清楚浮动的一种，常用的一般是clear:both overflower:hidden -->
+
+
+    <!-- text-size-adjust 解决浏览器允许设置最小字体为12px问题，存在兼容性问题，可以用scale缩小解决问题 -->
+
+
+    <!-- margin:auto这个属性并不陌生，但是当你搭配flex使用就很神奇了，外层盒子display:flex,内层所有盒子 maegin:auto这一个属性就相当于*justify-content*: -->
+    <!-- space-around;*align-items*: center; -->
+
+
+    <!-- justify-content*: space-evenly 不同于space-around 这是子盒子完全均分，在某些场景十分方便 -->
+
+
+    <!-- flex-grow 当flex-grow之和小于1时，只能按比例分配部分剩余空间，而不是全部 -->
+
+
+    <!-- input宽度 input的宽度并不是通过block之后赋值改变的，其宽度取决于size的值 -->
+
+
+    <!-- position 绝对定位和固定定位时，同时设置left和right相当于隐式地设置宽度 -->
+
+
+    <!-- position:sticky 粘性定位，在一定高度进行定位，对于那种某些dom到达窗口最上面就定位十分方便 -->
+
+
+    <!-- rgba 当需要设置透明背景时，background可以直接设置rgba 等同于background + opacity -->
+
+
+    <!-- transparent 表示透明色相当于rgba(0,0,0,0),例如写个三角形的时候给三方border设置透明一方给个颜色就有三角形了 -->
+
+
+    <!-- text-indent 缩进，可以设置负值隐藏文本，使用fong-size:0px也可以隐藏文本内容 -->
+
+
+    <!-- background:concic-gradient(red 0 30%,green 30% 60%,blue 60% 100%) 角向渐变 可以用css画饼图 -->
+
+
+    <!-- background-attachment指定背景如何附着在容器上，可以对背景进行固定不随窗口改变高度滑动 -->
+
+
+    <!-- outline 不同于border，他不占位相当于覆盖不会增加盒子宽高，可以在内在外。 -->
+
+
+    <!-- animation-delay 动画的延迟加载，可以实现很多交叉效果 -->
+
+
+    <!-- object-fit:cover图片设置固定宽高后可以通过其保持比例，cintain也可以 -->
+
+
+    <!-- cursor:not-allowed设置鼠标禁用状态,当button为disabled状态时不要忘记加上哦 -->
+
+
+    <!-- filter:blur(10px) 背景虚化模糊，有时候很方便 -->
+
+
+    <!-- fill-available 填充宽度， -->
+
+  </div>
+</body>
+
+</html>
